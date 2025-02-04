@@ -7,9 +7,9 @@ async function bootstrap() {
   
   const config = new DocumentBuilder()
     .setTitle('Api Locations')
-    .setDescription('Api to get Countries, States and Cities')
+    .setDescription('Api to get Countries, States and Cities from all over the world')
     .setVersion('1.0')
-    .addTag('locations')
+    .addTag('Enpoints')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

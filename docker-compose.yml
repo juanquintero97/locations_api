@@ -1,29 +1,7 @@
 # deploy databases container with mariadb, mysql and postgres services with data persistence and setting user and password
 version: '3'
-name: databases
+name: Locations API
 services:
-  # mariadb:
-  #   image: mariadb
-  #   restart: always
-  #   environment:
-  #     MARIADB_ROOT_PASSWORD: root
-  #     MARIADB_DATABASE: test
-  #     MARIADB_USER: root
-  #   volumes:
-  #     - ./mariadb_data:/var/lib/mysql
-  #   ports:
-  #     - "3306:3306"
-  # mysql:
-  #   image: mysql
-  #   restart: always
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: password
-  #     MYSQL_DATABASE: test
-  #     MYSQL_USER: dbadmin
-  #   volumes:
-  #     - ./mysql_data:/var/lib/mysql
-  #   ports:
-  #     - "3306:3306"
   postgres:
     image: postgres
     restart: always
@@ -35,7 +13,13 @@ services:
       - ./postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  locations_api:
+    image: locations_api
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres     
+
 volumes:
-  # mariadb_data: {}
-  # mysql_data: {}
   postgres_data: {}
